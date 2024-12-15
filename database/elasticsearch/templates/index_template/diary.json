@@ -1,0 +1,53 @@
+{ // template-dairy-v0.0.1
+  "index_patterns": [
+    "dairy-v0.0.1-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_replicas": 0,
+      "number_of_shards": 5,
+      "refresh_interval": "60s"
+    },
+    "mappings": {
+      "properties": {
+        "author": {
+          "type": "keyword"
+        },
+        "date": {
+          "type": "date",
+          "format": "date_time"
+        },
+        "text": {
+          "type": "text",
+          "analyzer": "kuromoji_analyzer",
+          "fields": {
+            "ngram": {
+              "type": "text",
+              "analyzer": "ngram_analyzer"
+            }
+          }
+        },
+        "system": {
+          "properties": {
+            "created_at": {
+              "type": "date",
+              "format": "date_time"
+            },
+            "updated_at": {
+              "type": "date",
+              "format": "date_time"
+            },
+            "deleted_at": {
+              "type": "date",
+              "format": "date_time"
+            }
+          }
+        }
+      }
+    }
+  },
+  "composed_of": [
+    "component-kuromoji-settings-v0.0.1",
+    "component-ngram-settings-v0.0.1"
+  ]
+}

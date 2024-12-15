@@ -1,0 +1,28 @@
+{ // component-ngram-settings-v0.0.1
+  "template": {
+    "settings": {
+      "analysis": {
+        "tokenizer": {
+          "ngram_tokenizer": {
+            "type": "ngram",
+            "min_gram": 2,
+            "max_gram": 2,
+            "token_chars": [
+              "letter",
+              "digit"
+            ]
+          }
+        },
+        "analyzer": {
+          "ngram_analyzer": {
+            "type": "custom",
+            "tokenizer": "ngram_tokenizer",
+            "filter": [
+              "lowercase"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
